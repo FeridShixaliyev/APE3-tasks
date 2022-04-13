@@ -2,21 +2,30 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp47
+namespace ConsoleApp46
 {
-    class Student:Person
+    class Student
     {
-        public Student(string name, string surname, int age):base(name, surname, age)
+        public Student(string fullname,int age)
         {
-                
+            _id++;
+            Id = _id;
+            FullName = fullname;
+            Age = age;
         }
         private static int _id;
-        public int Id { get; }
-        public string[] Lessons;
-
-        public void ShowInfo()
+        private int _age;
+        public string FullName { get; set; }
+        public int Age
         {
-            Console.WriteLine($"Fullname: {Name} {Surname}\nAge: {Age}");
+            get => _age;
+            set
+            {
+                if (value > 0 && value < 150)
+                    _age = value;
+            }
         }
+        public int Id { get; }
+        
     }
 }
